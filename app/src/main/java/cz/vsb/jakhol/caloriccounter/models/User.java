@@ -1,6 +1,7 @@
 package cz.vsb.jakhol.caloriccounter.models;
 
-import java.time.LocalDate;
+import cz.vsb.jakhol.caloriccounter.models.enums.GoalState;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,14 +11,26 @@ public class User {
 
     private double weight;
     private double goalWeight;
+    private GoalState goalState;
 
     private List<WeightStatistics> history;
 
-    public User(String nickname, double weight, double goalWeight, List<WeightStatistics> history) {
+
+    public User(String nickname, double weight, double goalWeight, List<WeightStatistics> history, GoalState goalState) {
         this.nickname = nickname;
         this.weight = weight;
         this.goalWeight = goalWeight;
         this.history = history;
+        this.goalState = goalState;
+
+    }
+
+    public GoalState getGoalState() {
+        return goalState;
+    }
+
+    public void setGoalState(GoalState goalState) {
+        this.goalState = goalState;
     }
 
     public List<WeightStatistics> getHistory() {
