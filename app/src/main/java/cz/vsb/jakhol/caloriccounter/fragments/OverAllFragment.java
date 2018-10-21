@@ -10,57 +10,59 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
 import cz.vsb.jakhol.caloriccounter.R;
+import cz.vsb.jakhol.caloriccounter.activites.MainActivity;
 import cz.vsb.jakhol.caloriccounter.models.DayMenu;
 import cz.vsb.jakhol.caloriccounter.models.Food;
 import cz.vsb.jakhol.caloriccounter.models.NutritionValuePer100g;
 
+import java.util.Locale;
+
 public class OverAllFragment extends Fragment {
 
-    ProgressBar proteinsBar;
-    ProgressBar carbohydratesBar;
-    ProgressBar fatsBar;
-    ProgressBar fiberBar;
+    private ProgressBar proteinsBar;
+    private ProgressBar carbohydratesBar;
+    private ProgressBar fatsBar;
+    private ProgressBar fiberBar;
+
+    private TextView proteinsTextView;
+    private TextView carbohydratesTextView;
+    private TextView fatsTextView;
+    private TextView fiberTextView;
 
 
-    TextView proteinsTextView;
-    TextView carbohydratesTextView;
-    TextView fatsTextView;
-    TextView fiberTextView;
+    private CircularProgressIndicator totalCaloriesBar;
 
-    CircularProgressIndicator totalCaloriesBar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_over_all, container, false);
-
         findViews(view);
-
-
-        DayMenu dayMenu = new DayMenu();
-        proteinsTextView.setText("0/" + dayMenu.getTotal().getProteins());
-        carbohydratesTextView.setText("0/" + dayMenu.getTotal().getCarbohydrates());
-        fatsTextView.setText("0/" + dayMenu.getTotal().getFats());
-        fiberTextView.setText("0/" + dayMenu.getTotal().getFiber());
-
-        dayMenu.addFood(new Food("Tvaroh", new NutritionValuePer100g(2, 10, 20, 0)), 250);
-
-        double progress = (dayMenu.getCurrent().getProteins() / (double) dayMenu.getTotal().getProteins()) * 100.0;
-        proteinsBar.setProgress((int) progress);
-        progress = (dayMenu.getCurrent().getCarbohydrates() / (double) dayMenu.getTotal().getCarbohydrates()) * 100.0;
-        carbohydratesBar.setProgress((int) progress);
-        progress = (dayMenu.getCurrent().getFats() / (double) dayMenu.getTotal().getFats()) * 100.0;
-        fatsBar.setProgress((int) progress);
-        progress = (dayMenu.getCurrent().getFiber() / (double) dayMenu.getTotal().getFiber()) * 100.0;
-        fiberBar.setProgress((int) progress);
-        totalCaloriesBar.setProgress(dayMenu.getCurrent().getCalories(), dayMenu.getTotal().getCalories());
-
-
-        return view ;
-
+        countProgress();
+        return view;
     }
 
-    private void findViews(View view){
+    private void countProgress() {
+        DayMenu menu = MainActivity.DAY_MENU;
+
+        String format = "%d / %d";
+        proteinsTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getProteins(), menu.getTotal().getProteins()));
+        carbohydratesTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getCarbohydrates(), menu.getTotal().getCarbohydrates()));
+        fatsTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getFats(), menu.getTotal().getFats()));
+        fiberTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getFiber(), menu.getTotal().getProteins()));
+
+        double progress = (menu.getCurrent().getProteins() / (double) menu.getTotal().getProteins()) * 100.0;
+        proteinsBar.setProgress((int) progress);
+        progress = (menu.getCurrent().getCarbohydrates() / (double) menu.getTotal().getCarbohydrates()) * 100.0;
+        carbohydratesBar.setProgress((int) progress);
+        progress = (menu.getCurrent().getFats() / (double) menu.getTotal().getFats()) * 100.0;
+        fatsBar.setProgress((int) progress);
+        progress = (menu.getCurrent().getFiber() / (double) menu.getTotal().getFiber()) * 100.0;
+        fiberBar.setProgress((int) progress);
+        totalCaloriesBar.setProgress(menu.getCurrent().getCalories(), menu.getTotal().getCalories());
+    }
+
+    private void findViews(View view) {
         proteinsTextView = view.findViewById(R.id.text_proteins_summary);
         carbohydratesTextView = view.findViewById(R.id.text_carbohydrates_summary);
         fatsTextView = view.findViewById(R.id.text_fats_summary);

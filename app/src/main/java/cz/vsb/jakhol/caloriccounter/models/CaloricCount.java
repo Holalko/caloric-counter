@@ -65,23 +65,23 @@ public class CaloricCount {
 
     public static Macronutrients countNutrientsFromFood(List<EatedFood> foodList) {
         Macronutrients macronutrients = new Macronutrients();
-        int fiber = 0;
-        int proteins = 0;
-        int carbs = 0;
-        int fats = 0;
-        int calories = 0;
+        double fiber = 0;
+        double proteins = 0;
+        double carbs = 0;
+        double fats = 0;
+        double calories = 0;
         for (EatedFood food : foodList) {
-            calories += food.getWeight() * (food.getNutritionValuePer100g().getTotalCalories() / 100);
+            calories += food.getWeight() * (food.getNutritionValuePer100g().getTotalCalories() / 100.);
             fiber += food.getWeight() * (food.getNutritionValuePer100g().getFiber() / 100.);
             proteins += food.getWeight() * (food.getNutritionValuePer100g().getProteins() / 100.);
             carbs += food.getWeight() * (food.getNutritionValuePer100g().getCarbohydrates() / 100.);
             fats += food.getWeight() * (food.getNutritionValuePer100g().getFats() / 100.);
         }
-        macronutrients.setFiber(fiber);
-        macronutrients.setProteins(proteins);
-        macronutrients.setCarbohydrates(carbs);
-        macronutrients.setFats(fats);
-        macronutrients.setCalories(calories);
+        macronutrients.setFiber((int)fiber);
+        macronutrients.setProteins((int)proteins);
+        macronutrients.setCarbohydrates((int)carbs);
+        macronutrients.setFats((int)fats);
+        macronutrients.setCalories((int)calories);
         return macronutrients;
 
     }

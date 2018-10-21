@@ -13,6 +13,8 @@ public class DayMenu {
     private Macronutrients current;
 
     public DayMenu() {
+        this.total = new Macronutrients();
+        this.current = new Macronutrients();
         this.user = User.getUser();
         foodList = new ArrayList<>();
         this.countTotalNutrients();

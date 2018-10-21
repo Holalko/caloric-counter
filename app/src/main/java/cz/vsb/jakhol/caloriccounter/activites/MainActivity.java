@@ -6,19 +6,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.OverAllFragment;
 import cz.vsb.jakhol.caloriccounter.models.DayMenu;
-import cz.vsb.jakhol.caloriccounter.models.Food;
-import cz.vsb.jakhol.caloriccounter.models.NutritionValuePer100g;
 
-public class BoardActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNavigation;
+    public static final DayMenu DAY_MENU = getDayMenu();
+
+    // TODO return DayMenu from sqlite
+    private static DayMenu getDayMenu() {
+        return new DayMenu();
+    }
 
 
     private Fragment fragment;
@@ -28,14 +28,11 @@ public class BoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
-
         initBottomNavigation();
-
-
     }
 
     private void initBottomNavigation() {
-        bottomNavigation = findViewById(R.id.navigationView);
+        BottomNavigationView bottomNavigation = findViewById(R.id.navigationView);
         bottomNavigation.inflateMenu(R.menu.navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(bottomNavigationSelect);
     }

@@ -13,5 +13,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="calories">Calories:</string>
+    <string name="search">Search</string>
+    <string name="weight">Weight</string>
+    <string name="grams">g</string>
+    <string name="add_food">Add food</string>
 
 </resources>
