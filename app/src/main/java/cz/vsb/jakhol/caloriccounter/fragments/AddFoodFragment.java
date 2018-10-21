@@ -1,4 +1,4 @@
-package cz.vsb.jakhol.caloriccounter.activites;
+package cz.vsb.jakhol.caloriccounter.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
