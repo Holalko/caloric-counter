@@ -14,6 +14,7 @@ import cz.vsb.jakhol.caloriccounter.activites.MainActivity;
 import cz.vsb.jakhol.caloriccounter.models.DayMenu;
 import cz.vsb.jakhol.caloriccounter.models.Food;
 import cz.vsb.jakhol.caloriccounter.models.NutritionValuePer100g;
+import cz.vsb.jakhol.caloriccounter.stores.DayMenuStore;
 
 import java.util.Locale;
 
@@ -28,6 +29,7 @@ public class OverAllFragment extends Fragment {
     private TextView carbohydratesTextView;
     private TextView fatsTextView;
     private TextView fiberTextView;
+    private TextView totalCalTextView;
 
 
     private CircularProgressIndicator totalCaloriesBar;
@@ -43,13 +45,14 @@ public class OverAllFragment extends Fragment {
     }
 
     private void countProgress() {
-        DayMenu menu = MainActivity.DAY_MENU;
+        DayMenu menu = DayMenuStore.getDayMenu();
 
         String format = "%d / %d";
         proteinsTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getProteins(), menu.getTotal().getProteins()));
         carbohydratesTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getCarbohydrates(), menu.getTotal().getCarbohydrates()));
         fatsTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getFats(), menu.getTotal().getFats()));
         fiberTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getFiber(), menu.getTotal().getProteins()));
+        totalCalTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getCalories(), menu.getTotal().getCalories()));
 
         double progress = (menu.getCurrent().getProteins() / (double) menu.getTotal().getProteins()) * 100.0;
         proteinsBar.setProgress((int) progress);
@@ -67,6 +70,7 @@ public class OverAllFragment extends Fragment {
         carbohydratesTextView = view.findViewById(R.id.text_carbohydrates_summary);
         fatsTextView = view.findViewById(R.id.text_fats_summary);
         fiberTextView = view.findViewById(R.id.text_fiber_summary);
+        totalCalTextView = view.findViewById(R.id.text_total_cal_summary);
 
 
         totalCaloriesBar = view.findViewById(R.id.bar_total_cal);

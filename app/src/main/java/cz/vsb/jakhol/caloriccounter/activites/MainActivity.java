@@ -9,16 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.OverAllFragment;
-import cz.vsb.jakhol.caloriccounter.models.DayMenu;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final DayMenu DAY_MENU = getDayMenu();
-
-    // TODO return DayMenu from sqlite
-    private static DayMenu getDayMenu() {
-        return new DayMenu();
-    }
 
 
     private Fragment fragment;
@@ -29,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
         initBottomNavigation();
+        fragment = new OverAllFragment();
+        fragmentManager = getSupportFragmentManager();
+        final FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.board_container, fragment).commit();
     }
 
     private void initBottomNavigation() {
