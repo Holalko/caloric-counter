@@ -8,21 +8,12 @@ public class Food {
     private NutritionValuePer100g nutritionValuePer100g;
 
 
-    private List<Weights> weights;
 
-    public Food(String name, NutritionValuePer100g nutritionValuePer100g, List<Weights> weights) {
+    public Food(String name, NutritionValuePer100g nutritionValuePer100g) {
         this.name = name;
         this.nutritionValuePer100g = nutritionValuePer100g;
-        this.weights = weights;
     }
 
-    public List<Weights> getWeights() {
-        return weights;
-    }
-
-    public void setWeights(List<Weights> weights) {
-        this.weights = weights;
-    }
 
     public String getName() {
         return name;

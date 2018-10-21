@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
             android:id="@+id/navigation_overall"
-            android:icon="@drawable/menu"
+            android:icon="@drawable/search"
             android:title="@string/menu_overall"/>
+
+    <item
+            android:id="@+id/navigation_menu"
+            android:icon="@drawable/menu"
+            android:title="@string/menu_menu"/>
 
     <item
             android:id="@+id/navigation_add"

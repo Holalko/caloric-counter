@@ -3,9 +3,9 @@ package cz.vsb.jakhol.caloriccounter.models;
 
 public class NutritionValuePer100g {
 
-    private static final Integer KCAL_PER_CARBOHYDRATE = 4;
-    private static final Integer KCAL_PER_PROTEIN = 4;
-    private static final Integer KCAL_PER_FAT = 9;
+    public static final Integer KCAL_PER_CARBOHYDRATE = 4;
+    public static final Integer KCAL_PER_PROTEIN = 4;
+    public static final Integer KCAL_PER_FAT = 9;
 
     private Integer carbohydrates;
     private Integer proteins;
