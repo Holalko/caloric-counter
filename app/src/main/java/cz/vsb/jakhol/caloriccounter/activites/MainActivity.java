@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
+import cz.vsb.jakhol.caloriccounter.fragments.FoodMenuFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.OverAllFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
 //                break;
             }
             case R.id.navigation_menu: {
-                return true;
-//                break;
+                fragment = new FoodMenuFragment();
+                break;
             }
             default:
                 return false;

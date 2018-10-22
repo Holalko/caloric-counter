@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_add_food_to_day_menu_constrain_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="cz.vsb.jakhol.caloriccounter.activites.AddFoodToDayMenuActivity">

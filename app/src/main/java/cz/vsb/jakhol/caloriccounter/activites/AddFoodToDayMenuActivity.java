@@ -1,12 +1,14 @@
 package cz.vsb.jakhol.caloriccounter.activites;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.models.Food;
@@ -70,9 +72,23 @@ public class AddFoodToDayMenuActivity extends AppCompatActivity {
     }
 
     private Button.OnClickListener addFoodListener = view -> {
-        int grams = Integer.parseInt(weight.getText().toString());
-        DayMenuStore.getDayMenu().addFood(FoodStore.getFoodList().get(index), grams);
-        finish();
+        view.getContext();
+        InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+        String inputValue = weight.getText().toString();
+        if(inputValue.matches("-?\\d+")){
+            int grams = Integer.parseInt(inputValue);
+            DayMenuStore.getDayMenu().addFood(FoodStore.getFoodList().get(index), grams);
+            Toast.makeText(view.getContext(), "Food added", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            Toast.makeText(view.getContext(), "Invalid value", Toast.LENGTH_SHORT).show();
+
+        }
+
 
     };
 
