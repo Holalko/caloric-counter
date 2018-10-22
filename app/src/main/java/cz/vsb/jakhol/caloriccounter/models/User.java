@@ -14,17 +14,8 @@ public final class User {
     private double goalWeight;
     private GoalState goalState;
 
-    private static User user;
 
-    public static User getUser() {
-        if (user == null) {
-            user = new User("Nick", 75.5, 80, 180, 20, GoalState.GAIN);
-            return user;
-        }
-        return user;
-    }
-
-    private User(String nickname, double weight, double goalWeight, double heightInCm, int age, GoalState goalState) {
+    public User(String nickname, double weight, double goalWeight, double heightInCm, int age, GoalState goalState) {
         this.nickname = nickname;
         this.weight = weight;
         this.goalWeight = goalWeight;

@@ -1,6 +1,8 @@
 package cz.vsb.jakhol.caloriccounter.models;
 
 
+import cz.vsb.jakhol.caloriccounter.stores.UserStore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class DayMenu {
     public DayMenu() {
         this.total = new Macronutrients();
         this.current = new Macronutrients();
-        this.user = User.getUser();
+        this.user = UserStore.getUser();
         foodList = new ArrayList<>();
         this.countTotalNutrients();
     }
