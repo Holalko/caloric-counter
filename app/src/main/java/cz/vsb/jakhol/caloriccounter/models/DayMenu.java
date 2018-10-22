@@ -22,7 +22,7 @@ public class DayMenu {
         this.countTotalNutrients();
     }
 
-    private void countTotalNutrients() {
+    public void countTotalNutrients() {
         total = CaloricCount.countTotalNutrients(user);
     }
 
