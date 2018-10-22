@@ -8,6 +8,13 @@ public class Macronutrients {
     private int fats;
     private int fiber;
 
+    public Macronutrients(){
+        this.calories = 0;
+        this.proteins = 0;
+        this.carbohydrates = 0;
+        this.fats = 0;
+        this.fiber = 0;
+    }
 
     public int getCalories() {
         return calories;
