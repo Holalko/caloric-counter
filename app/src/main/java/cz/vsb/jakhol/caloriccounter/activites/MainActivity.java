@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import cz.vsb.jakhol.caloriccounter.ProfileFragment;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.FoodMenuFragment;
@@ -48,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case R.id.navigation_profile: {
-                return true;
-//                break;
+                fragment = new ProfileFragment();
+                break;
             }
             case R.id.navigation_menu: {
                 fragment = new FoodMenuFragment();

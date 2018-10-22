@@ -18,5 +18,10 @@
     <string name="weight">Weight</string>
     <string name="grams">g</string>
     <string name="add_food">Add food</string>
+    <string name="name">Name</string>
+    <string name="height">height</string>
+    <string name="goal_weight">Goal weight</string>
+    <string name="age">Age</string>
+    <string name="change">Change</string>
 
 </resources>
