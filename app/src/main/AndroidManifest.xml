@@ -18,8 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activites.AddFoodToDayMenuActivity"
-                  android:theme="@style/Theme.AppCompat">
+        <activity
+                android:name=".activites.AddFoodToDayMenuActivity"
+                android:theme="@style/Theme.AppCompat">
+        </activity>
+        <activity android:name=".ScanningActivity">
+        </activity>
+        <activity
+                android:name=".CreateNewFoodActivity"
+                android:label="@string/title_activity_create_new_food">
         </activity>
     </application>
 

@@ -7,7 +7,15 @@ public class Food {
     private String name;
     private NutritionValuePer100g nutritionValuePer100g;
 
+    private String barcodeNumber;
 
+    public String getBarcodeNumber() {
+        return barcodeNumber;
+    }
+
+    public void setBarcodeNumber(String barcodeNumber) {
+        this.barcodeNumber = barcodeNumber;
+    }
 
     public Food(String name, NutritionValuePer100g nutritionValuePer100g) {
         this.name = name;

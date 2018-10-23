@@ -71,6 +71,7 @@ public class AddFoodToDayMenuActivity extends AppCompatActivity {
     }
 
     private Button.OnClickListener addFoodListener = view -> {
+        // HIDE KEYBOARD
         view.getContext();
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         if (imm != null) {

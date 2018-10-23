@@ -23,5 +23,10 @@
     <string name="goal_weight">Goal weight</string>
     <string name="age">Age</string>
     <string name="change">Change</string>
+    <string name="add_new">Add new</string>
+    <string name="title_activity_create_new_food">CreateNewFoodActivity</string>
+    <string name="barcode_text">Barcode</string>
+    <string name="scan">scan</string>
+    <string name="create_new">Create new food</string>
 
 </resources>
