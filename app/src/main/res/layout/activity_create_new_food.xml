@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="cz.vsb.jakhol.caloriccounter.CreateNewFoodActivity">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:padding="15sp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" android:id="@+id/createLinearLayout"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="224dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintVertical_bias="0.195">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:width="100dp"
+                    android:textSize="20sp"
+                    android:text="@string/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_name"/>
+            <EditText
+                    android:inputType="text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_name_value"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:width="100dp"
+                    android:textSize="20sp"
+                    android:text="@string/proteins_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_proteins"/>
+            <EditText
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_proteins_value"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:width="100dp"
+                    android:textSize="20sp"
+                    android:text="@string/fats_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_fats"/>
+            <EditText
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_fats_value"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:width="100dp"
+                    android:textSize="20sp"
+                    android:text="@string/carbohydrates_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_carbohydrates"/>
+            <EditText
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_carbs_value"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:width="100dp"
+                    android:textSize="20sp"
+                    android:text="@string/fiber_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_fiber"/>
+            <EditText
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_fiber_value"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:width="100dp"
+                    android:textSize="20sp"
+                    android:text="@string/barcode_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_barcode"/>
+            <Button
+                    android:text="@string/scan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/button_create_barcode"/>
+            <TextView
+                    android:width="100dp"
+                    android:textSize="20sp"
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content" android:id="@+id/text_create_barcode_value"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                    android:text="@string/create_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/button_create_new_food"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

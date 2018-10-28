@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
+import cz.vsb.jakhol.caloriccounter.CreateNewFoodActivity;
 import cz.vsb.jakhol.caloriccounter.activites.AddFoodToDayMenuActivity;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.adapters.FoodAdapter;
@@ -31,6 +33,12 @@ public class AddFoodFragment extends Fragment {
             Intent intent = new Intent(getActivity(), AddFoodToDayMenuActivity.class);
             intent.putExtra(INDEX_OF_SELECTED_FOOD, i);
             startActivityForResult(intent, 0);
+        });
+
+        Button addButton = view.findViewById(R.id.button_add_new);
+        addButton.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getActivity(), CreateNewFoodActivity.class);
+            startActivity(intent);
         });
 
         return view;
