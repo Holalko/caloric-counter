@@ -15,14 +15,14 @@ public final class User {
     private GoalState goalState;
 
 
-    public User(String nickname, double weight, double goalWeight, double heightInCm, int age, GoalState goalState) {
+    public User(String nickname, double weight, double goalWeight, double heightInCm, int age) {
         this.nickname = nickname;
         this.weight = weight;
         this.goalWeight = goalWeight;
-        this.goalState = goalState;
         this.age = age;
         this.heightInCm = heightInCm;
 
+        this.goalState = weight > goalWeight ? GoalState.LOOSE : GoalState.GAIN;
     }
 
     public int getAge() {

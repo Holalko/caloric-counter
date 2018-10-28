@@ -7,6 +7,16 @@ public class NutritionValuePer100g {
     public static final Integer KCAL_PER_PROTEIN = 4;
     public static final Integer KCAL_PER_FAT = 9;
 
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     private Integer carbohydrates;
     private Integer proteins;
     private Integer fats;

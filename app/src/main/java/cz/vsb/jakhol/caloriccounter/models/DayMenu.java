@@ -1,24 +1,27 @@
 package cz.vsb.jakhol.caloriccounter.models;
 
 
-import cz.vsb.jakhol.caloriccounter.stores.UserStore;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DayMenu {
 
+
+    private Integer id;
+    private String date;
+
     private User user;
     private List<EatedFood> foodList;
+
 
     private Macronutrients total;
     private Macronutrients current;
 
-    public DayMenu() {
+    public DayMenu(User user) {
         this.total = new Macronutrients();
         this.current = new Macronutrients();
-        this.user = UserStore.getUser();
         foodList = new ArrayList<>();
+        this.user = user;
         this.countTotalNutrients();
     }
 
@@ -32,9 +35,11 @@ public class DayMenu {
 
     public void setFoodList(List<EatedFood> foodList) {
         this.foodList = foodList;
+        current = CaloricCount.countNutrientsFromFood(foodList);
+
     }
 
-    public void addFood(Food food, int weight){
+    public void addFood(Food food, int weight) {
         EatedFood eatedFood = new EatedFood(food.getName(), food.getNutritionValuePer100g());
         eatedFood.setWeight(weight);
         this.foodList.add(eatedFood);
@@ -58,7 +63,29 @@ public class DayMenu {
         this.current = current;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 
 }

@@ -13,7 +13,7 @@ import cz.vsb.jakhol.caloriccounter.CreateNewFoodActivity;
 import cz.vsb.jakhol.caloriccounter.activites.AddFoodToDayMenuActivity;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.adapters.FoodAdapter;
-import cz.vsb.jakhol.caloriccounter.stores.FoodStore;
+import cz.vsb.jakhol.caloriccounter.stores.DataStore;
 
 public class AddFoodFragment extends Fragment {
 
@@ -25,7 +25,8 @@ public class AddFoodFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_food, container, false);
 
         ListView listView = view.findViewById(R.id.list_add_food);
-        FoodAdapter foodAdapter = new FoodAdapter(getContext(), R.layout.list_food_layout, FoodStore.getFoodList());
+        DataStore dataStore = new DataStore(getContext());
+        FoodAdapter foodAdapter = new FoodAdapter(getContext(), R.layout.list_food_layout, dataStore.getFoodList());
 
         listView.setAdapter(foodAdapter);
 

@@ -4,6 +4,16 @@ import java.util.List;
 
 public class Food {
 
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     private String name;
     private NutritionValuePer100g nutritionValuePer100g;
 
@@ -20,6 +30,10 @@ public class Food {
     public Food(String name, NutritionValuePer100g nutritionValuePer100g) {
         this.name = name;
         this.nutritionValuePer100g = nutritionValuePer100g;
+    }
+
+    public Food(){
+
     }
 
 

@@ -12,7 +12,7 @@ import cz.vsb.jakhol.caloriccounter.models.Food;
 import cz.vsb.jakhol.caloriccounter.models.NutritionValuePer100g;
 import cz.vsb.jakhol.caloriccounter.scanner.IntentIntegrator;
 import cz.vsb.jakhol.caloriccounter.scanner.IntentResult;
-import cz.vsb.jakhol.caloriccounter.stores.FoodStore;
+import cz.vsb.jakhol.caloriccounter.stores.DataStore;
 
 public class CreateNewFoodActivity extends Activity {
 
@@ -56,6 +56,7 @@ public class CreateNewFoodActivity extends Activity {
         scanIntegrator.initiateScan();
     };
 
+    // TODO validation
     private Button.OnClickListener createOnClick = view -> {
         String nameValue = nameInput.getText().toString();
         String proteinsValue = proteinsInput.getText().toString();
@@ -71,7 +72,8 @@ public class CreateNewFoodActivity extends Activity {
         Food newFood = new Food(nameValue, nutritions);
         newFood.setBarcodeNumber(barcodeValue2);
 
-        FoodStore.getFoodList().add(newFood);
+        DataStore dataStore = new DataStore(view.getContext());
+        dataStore.addFood(newFood);
         // HIDE KEYBOARD
         view.getContext();
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);

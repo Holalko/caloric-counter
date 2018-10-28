@@ -10,11 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
 import cz.vsb.jakhol.caloriccounter.R;
-import cz.vsb.jakhol.caloriccounter.activites.MainActivity;
 import cz.vsb.jakhol.caloriccounter.models.DayMenu;
-import cz.vsb.jakhol.caloriccounter.models.Food;
-import cz.vsb.jakhol.caloriccounter.models.NutritionValuePer100g;
-import cz.vsb.jakhol.caloriccounter.stores.DayMenuStore;
+import cz.vsb.jakhol.caloriccounter.stores.DataStore;
 
 import java.util.Locale;
 
@@ -45,7 +42,7 @@ public class OverAllFragment extends Fragment {
     }
 
     private void countProgress() {
-        DayMenu menu = DayMenuStore.getDayMenu();
+        DayMenu menu = new DataStore(getContext()).getDayMenu();
 
         String format = "%d / %d";
         proteinsTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getProteins(), menu.getTotal().getProteins()));

@@ -12,8 +12,7 @@ import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.models.Food;
 import cz.vsb.jakhol.caloriccounter.models.NutritionValuePer100g;
-import cz.vsb.jakhol.caloriccounter.stores.DayMenuStore;
-import cz.vsb.jakhol.caloriccounter.stores.FoodStore;
+import cz.vsb.jakhol.caloriccounter.stores.DataStore;
 
 import java.util.Locale;
 
@@ -45,7 +44,8 @@ public class AddFoodToDayMenuActivity extends AppCompatActivity {
     }
 
     private void setValuesForComponents(Integer index) {
-        Food food = FoodStore.getFoodList().get(index);
+        DataStore dataStore = new DataStore(getApplicationContext());
+        Food food = dataStore.getFoodList().get(index);
         name.setText(food.getName());
         NutritionValuePer100g nutritions = food.getNutritionValuePer100g();
         fiber.setText(String.format(Locale.getDefault(), "%d", nutritions.getFiber()));
@@ -81,7 +81,8 @@ public class AddFoodToDayMenuActivity extends AppCompatActivity {
         String inputValue = weight.getText().toString();
         if (inputValue.matches("-?\\d+")) {
             int grams = Integer.parseInt(inputValue);
-            DayMenuStore.getDayMenu().addFood(FoodStore.getFoodList().get(index), grams);
+            DataStore dataStore = new DataStore(view.getContext());
+            new DataStore(view.getContext()).addToDayMenu(dataStore.getFoodList().get(index), grams);
             Toast.makeText(view.getContext(), "Food added", Toast.LENGTH_SHORT).show();
             finish();
         } else {

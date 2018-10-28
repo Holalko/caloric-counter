@@ -11,9 +11,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import cz.vsb.jakhol.caloriccounter.models.DayMenu;
 import cz.vsb.jakhol.caloriccounter.models.User;
-import cz.vsb.jakhol.caloriccounter.stores.DayMenuStore;
-import cz.vsb.jakhol.caloriccounter.stores.UserStore;
+import cz.vsb.jakhol.caloriccounter.stores.DataStore;
 
 import java.util.Locale;
 
@@ -41,7 +41,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setValues() {
-        User user = UserStore.getUser();
+        User user = new DataStore(getContext()).getUser();
 
         inputName.setText(user.getNickname());
         inputAge.setText(String.format(Locale.getDefault(), "%d", user.getAge()));
@@ -70,13 +70,15 @@ public class ProfileFragment extends Fragment {
         double height = getDoubleFromInput(inputHeight);
         double goalWeight = getDoubleFromInput(inputGoalWeight);
 
-        User user = UserStore.getUser();
+        User user = new DataStore(view.getContext()).getUser();
         user.setWeight(weigth);
         user.setAge(age);
         user.setGoalWeight(goalWeight);
         user.setNickname(name);
         user.setHeightInCm(height);
-        DayMenuStore.getDayMenu().countTotalNutrients();
+        new DataStore(view.getContext()).updateUser(user);
+        DayMenu dayMenu = new DataStore(view.getContext()).getDayMenu();
+        dayMenu.countTotalNutrients();
         Toast.makeText(getContext(), "Profile changed", Toast.LENGTH_SHORT).show();
 
         view.getContext();
