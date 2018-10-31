@@ -11,7 +11,8 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".activites.MainActivity"
-                android:theme="@style/Theme.AppCompat">
+                android:theme="@style/Theme.AppCompat"
+                android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,13 +21,16 @@
         </activity>
         <activity
                 android:name=".activites.AddFoodToDayMenuActivity"
-                android:theme="@style/Theme.AppCompat">
+                android:theme="@style/Theme.AppCompat"
+                android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".ScanningActivity">
+        <activity android:name=".ScanningActivity"
+                  android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
                 android:name=".CreateNewFoodActivity"
-                android:label="@string/title_activity_create_new_food">
+                android:label="@string/title_activity_create_new_food"
+                android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

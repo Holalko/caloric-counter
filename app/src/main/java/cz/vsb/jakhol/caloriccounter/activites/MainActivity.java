@@ -1,16 +1,20 @@
 package cz.vsb.jakhol.caloriccounter.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 import cz.vsb.jakhol.caloriccounter.ProfileFragment;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.FoodMenuFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.OverAllFragment;
+import cz.vsb.jakhol.caloriccounter.scanner.IntentIntegrator;
+import cz.vsb.jakhol.caloriccounter.scanner.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,4 +69,15 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanningResult != null) {
+            String scanContent = scanningResult.getContents();
+            EditText searchInput = findViewById(R.id.input_search);
+
+
+            searchInput.setText(scanContent);
+        }
+    }
 }

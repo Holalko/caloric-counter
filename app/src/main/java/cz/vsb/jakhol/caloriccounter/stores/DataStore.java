@@ -156,14 +156,27 @@ public class DataStore extends SQLiteOpenHelper {
 
     public List<Food> getFoodList() {
 
-        List<Food> foodList = new ArrayList<>();
 
         String selectQuery = "SELECT  * FROM " + TABLE_FOOD_STORE;
 
+        // return note list
+        return getFoodValues(selectQuery);
+    }
+
+    public List<Food> getFoodList(String nameOrBarcode) {
+
+        String selectQuery = "SELECT  * FROM " + TABLE_FOOD_STORE +
+                " WHERE " + FOOD_NAME + " LIKE '%" + nameOrBarcode + "%'" +
+                " OR " + FOOD_BARCODE + " = '" + nameOrBarcode +"'";
+
+        // return note list
+        return getFoodValues(selectQuery);
+    }
+
+    private List<Food> getFoodValues(String selectQuery) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
+        List<Food> foodList = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
                 Food food = new Food();
@@ -191,7 +204,7 @@ public class DataStore extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         cursor.close();
-        // return note list
+
         return foodList;
     }
 
@@ -258,7 +271,7 @@ public class DataStore extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Date today = new Date();
-        String date = today.getDate() + "." + (today.getMonth()+1) + "." + today.getYear();
+        String date = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getYear();
         String select = "SELECT * FROM " + TABLE_DAY_MENU + " WHERE " + DAY_MENU_DATE + "= '" + date + "'";
 
         Cursor cursor = db.rawQuery(select, null);
@@ -292,7 +305,7 @@ public class DataStore extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Date today = new Date();
-        String date = today.getDate() + "." + (today.getMonth()+1) + "." + today.getYear();
+        String date = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getYear();
 
 
         Gson gson = new Gson();
