@@ -24,11 +24,8 @@
                 android:theme="@style/Theme.AppCompat"
                 android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".ScanningActivity"
-                  android:windowSoftInputMode="adjustPan">
-        </activity>
         <activity
-                android:name=".CreateNewFoodActivity"
+                android:name=".activites.CreateNewFoodActivity"
                 android:label="@string/title_activity_create_new_food"
                 android:windowSoftInputMode="adjustPan">
         </activity>

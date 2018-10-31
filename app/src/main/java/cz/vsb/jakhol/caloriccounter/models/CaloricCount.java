@@ -4,6 +4,8 @@ import java.util.List;
 
 public class CaloricCount {
 
+    private CaloricCount(){}
+
     public static Macronutrients countTotalNutrients(User user) {
         double res = 88 + (13.4 * user.getWeight()) + (4.8 * user.getHeightInCm()) - (5.7 * user.getAge());
         switch (user.getGoalState()) {

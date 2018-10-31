@@ -294,11 +294,16 @@ public class DataStore extends SQLiteOpenHelper {
         }
     }
 
+    public void removeFromDayMenu(int index){
+        DayMenu dayMenu = getDayMenu();
+        dayMenu.getFoodList().remove(index);
+        updateDayMenu(dayMenu);
+    }
+
     public void addToDayMenu(Food food, int grams) {
         DayMenu dayMenu = getDayMenu();
         dayMenu.addFood(food, grams);
         updateDayMenu(dayMenu);
-
     }
 
     private void addNewDayMenu() {

@@ -12,12 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import cz.vsb.jakhol.caloriccounter.CreateNewFoodActivity;
-import cz.vsb.jakhol.caloriccounter.activites.AddFoodToDayMenuActivity;
+import cz.vsb.jakhol.caloriccounter.activites.CreateNewFoodActivity;
 import cz.vsb.jakhol.caloriccounter.R;
+import cz.vsb.jakhol.caloriccounter.activites.AddFoodToDayMenuActivity;
 import cz.vsb.jakhol.caloriccounter.adapters.FoodAdapter;
 import cz.vsb.jakhol.caloriccounter.scanner.IntentIntegrator;
-import cz.vsb.jakhol.caloriccounter.scanner.IntentResult;
 import cz.vsb.jakhol.caloriccounter.stores.DataStore;
 
 public class AddFoodFragment extends Fragment {

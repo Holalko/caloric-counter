@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
-import cz.vsb.jakhol.caloriccounter.ProfileFragment;
+import cz.vsb.jakhol.caloriccounter.fragments.ProfileFragment;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.FoodMenuFragment;
