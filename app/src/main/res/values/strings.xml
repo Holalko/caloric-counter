@@ -26,7 +26,8 @@
     <string name="add_new">Add new</string>
     <string name="title_activity_create_new_food">CreateNewFoodActivity</string>
     <string name="barcode_text">Barcode</string>
-    <string name="scan">scan</string>
+    <string name="scan">Scan</string>
+    <string name="find_by_scan">Scan barcode</string>
     <string name="create_new">Create new food</string>
 
 </resources>
