@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".activites.MainActivity"
+                android:name=".activities.MainActivity"
                 android:theme="@style/Theme.AppCompat"
                 android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -20,15 +20,24 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".activites.AddFoodToDayMenuActivity"
+                android:name=".activities.AddFoodToDayMenuActivity"
                 android:theme="@style/Theme.AppCompat"
                 android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
-                android:name=".activites.CreateNewFoodActivity"
+                android:name=".activities.CreateNewFoodActivity"
                 android:label="@string/title_activity_create_new_food"
                 android:windowSoftInputMode="adjustPan">
         </activity>
+        <receiver
+                android:name=".receivers.NotificationReceiver"
+                android:enabled="true"
+                android:exported="false" >
+        </receiver>
+        <service
+                android:name=".services.NotificationsIntentService"
+                android:exported="false" >
+        </service>
     </application>
 
 </manifest>

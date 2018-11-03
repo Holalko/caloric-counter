@@ -1,4 +1,4 @@
-package cz.vsb.jakhol.caloriccounter.activites;
+package cz.vsb.jakhol.caloriccounter.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

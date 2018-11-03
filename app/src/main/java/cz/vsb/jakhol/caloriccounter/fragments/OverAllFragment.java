@@ -48,7 +48,7 @@ public class OverAllFragment extends Fragment {
         proteinsTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getProteins(), menu.getTotal().getProteins()));
         carbohydratesTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getCarbohydrates(), menu.getTotal().getCarbohydrates()));
         fatsTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getFats(), menu.getTotal().getFats()));
-        fiberTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getFiber(), menu.getTotal().getProteins()));
+        fiberTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getFiber(), menu.getTotal().getFiber()));
         totalCalTextView.setText(String.format(Locale.getDefault(), format, menu.getCurrent().getCalories(), menu.getTotal().getCalories()));
 
         double progress = (menu.getCurrent().getProteins() / (double) menu.getTotal().getProteins()) * 100.0;
