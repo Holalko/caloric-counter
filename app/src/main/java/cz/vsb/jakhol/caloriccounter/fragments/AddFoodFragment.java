@@ -16,8 +16,12 @@ import cz.vsb.jakhol.caloriccounter.activites.CreateNewFoodActivity;
 import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.activites.AddFoodToDayMenuActivity;
 import cz.vsb.jakhol.caloriccounter.adapters.FoodAdapter;
+import cz.vsb.jakhol.caloriccounter.models.Food;
 import cz.vsb.jakhol.caloriccounter.scanner.IntentIntegrator;
 import cz.vsb.jakhol.caloriccounter.stores.DataStore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddFoodFragment extends Fragment {
 
@@ -26,6 +30,10 @@ public class AddFoodFragment extends Fragment {
     private Button scanBarcodeButton;
     private ListView listView;
     private EditText searchInput;
+
+    private List<Food> foodList = new ArrayList<>();
+    private FoodAdapter foodAdapter;
+
 
     @Nullable
     @Override
@@ -40,8 +48,8 @@ public class AddFoodFragment extends Fragment {
         scanBarcodeButton.setOnClickListener(scanBarcode);
 
         DataStore dataStore = new DataStore(getContext());
-
-        FoodAdapter foodAdapter = new FoodAdapter(getContext(), R.layout.list_food_layout, dataStore.getFoodList());
+        foodList.addAll(dataStore.getFoodList());
+        foodAdapter = new FoodAdapter(getContext(), R.layout.list_food_layout, foodList);
 
         listView.setAdapter(foodAdapter);
 
@@ -49,6 +57,7 @@ public class AddFoodFragment extends Fragment {
             Intent intent = new Intent(getActivity(), AddFoodToDayMenuActivity.class);
             intent.putExtra(INDEX_OF_SELECTED_FOOD, i);
             startActivityForResult(intent, 0);
+
         });
 
         Button addButton = view.findViewById(R.id.button_add_new);
@@ -58,6 +67,14 @@ public class AddFoodFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        foodList.clear();
+        foodList.addAll(new DataStore(getContext()).getFoodList());
+
+        foodAdapter.notifyDataSetChanged();
     }
 
     private Button.OnClickListener scanBarcode = view -> {

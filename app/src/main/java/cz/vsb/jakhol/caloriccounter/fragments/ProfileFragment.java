@@ -1,4 +1,4 @@
-package cz.vsb.jakhol.caloriccounter;
+package cz.vsb.jakhol.caloriccounter.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.models.DayMenu;
 import cz.vsb.jakhol.caloriccounter.models.User;
 import cz.vsb.jakhol.caloriccounter.stores.DataStore;
@@ -33,7 +34,6 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
 
-
         initComponents(view);
         setValues();
 
@@ -43,12 +43,13 @@ public class ProfileFragment extends Fragment {
     private void setValues() {
         User user = new DataStore(getContext()).getUser();
 
-        inputName.setText(user.getNickname());
-        inputAge.setText(String.format(Locale.getDefault(), "%d", user.getAge()));
-        inputWeight.setText(String.format(Locale.getDefault(), "%1$,.2f", user.getWeight()));
-        inputHeight.setText(String.format(Locale.getDefault(), "%1$,.2f", user.getHeightInCm()));
-        inputGoalWeight.setText(String.format(Locale.getDefault(), "%1$,.2f", user.getGoalWeight()));
-
+        if (user != null) {
+            inputName.setText(user.getNickname());
+            inputAge.setText(String.format(Locale.getDefault(), "%d", user.getAge()));
+            inputWeight.setText(String.format(Locale.getDefault(), "%1$,.2f", user.getWeight()));
+            inputHeight.setText(String.format(Locale.getDefault(), "%1$,.2f", user.getHeightInCm()));
+            inputGoalWeight.setText(String.format(Locale.getDefault(), "%1$,.2f", user.getGoalWeight()));
+        }
     }
 
     private void initComponents(View view) {
@@ -69,20 +70,24 @@ public class ProfileFragment extends Fragment {
         double weigth = getDoubleFromInput(inputWeight);
         double height = getDoubleFromInput(inputHeight);
         double goalWeight = getDoubleFromInput(inputGoalWeight);
-
-        User user = new DataStore(view.getContext()).getUser();
-        user.setWeight(weigth);
-        user.setAge(age);
-        user.setGoalWeight(goalWeight);
-        user.setNickname(name);
-        user.setHeightInCm(height);
-        new DataStore(view.getContext()).updateUser(user);
-        DayMenu dayMenu = new DataStore(view.getContext()).getDayMenu();
+        DataStore dataStore = new DataStore(view.getContext());
+        User user = dataStore.getUser();
+        if (user == null) {
+            user = new User(name, weigth, goalWeight, height, age);
+        } else {
+            user.setWeight(weigth);
+            user.setAge(age);
+            user.setGoalWeight(goalWeight);
+            user.setNickname(name);
+            user.setHeightInCm(height);
+        }
+        dataStore.updateUser(user);
+        DayMenu dayMenu = dataStore.getDayMenu();
         dayMenu.countTotalNutrients();
         Toast.makeText(getContext(), "Profile changed", Toast.LENGTH_SHORT).show();
 
         view.getContext();
-        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }

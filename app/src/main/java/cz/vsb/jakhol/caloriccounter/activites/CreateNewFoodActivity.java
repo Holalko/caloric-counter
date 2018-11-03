@@ -1,4 +1,4 @@
-package cz.vsb.jakhol.caloriccounter;
+package cz.vsb.jakhol.caloriccounter.activites;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.models.Food;
 import cz.vsb.jakhol.caloriccounter.models.NutritionValuePer100g;
 import cz.vsb.jakhol.caloriccounter.scanner.IntentIntegrator;

@@ -217,9 +217,7 @@ public class DataStore extends SQLiteOpenHelper {
 
         if (cursor != null) {
             if (cursor.getCount() == 0) {
-                this.addNewUser();
-                cursor.close();
-                return getUser();
+                return null;
             }
             cursor.moveToFirst();
             User user = new User(
@@ -252,11 +250,32 @@ public class DataStore extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void addNewUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(USER_NICKNAME, user.getNickname());
+        values.put(USER_AGE, user.getAge());
+        values.put(USER_GOAL_WEIGHT, user.getGoalWeight());
+        values.put(USER_WEIGHT, user.getWeight());
+        values.put(USER_HEIGHT, user.getHeightInCm());
+
+        // Inserting Row
+        db.insert(TABLE_USER, null, values);
+
+        // Closing database connection
+        db.close();
+    }
+
     public int updateUser(User user) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        if(getUser() == null){
+            this.addNewUser(user);
+            return 1;
+        }
         values.put(USER_HEIGHT, user.getHeightInCm());
         values.put(USER_WEIGHT, user.getWeight());
         values.put(USER_GOAL_WEIGHT, user.getGoalWeight());

@@ -13,8 +13,10 @@ import cz.vsb.jakhol.caloriccounter.R;
 import cz.vsb.jakhol.caloriccounter.fragments.AddFoodFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.FoodMenuFragment;
 import cz.vsb.jakhol.caloriccounter.fragments.OverAllFragment;
+import cz.vsb.jakhol.caloriccounter.models.User;
 import cz.vsb.jakhol.caloriccounter.scanner.IntentIntegrator;
 import cz.vsb.jakhol.caloriccounter.scanner.IntentResult;
+import cz.vsb.jakhol.caloriccounter.stores.DataStore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,8 +29,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
         initBottomNavigation();
-        fragment = new OverAllFragment();
+
+
+        initFirstFragment();
+    }
+
+    private void initFirstFragment() {
         fragmentManager = getSupportFragmentManager();
+        DataStore dataStore = new DataStore(getApplicationContext());
+        User user = dataStore.getUser();
+
+        if(user == null){
+            fragment = new ProfileFragment();
+        } else {
+            fragment = new OverAllFragment();
+        }
+
         final FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.board_container, fragment).commit();
     }
@@ -62,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
             }
             default:
                 return false;
+        }
+        DataStore dataStore = new DataStore(getApplicationContext());
+        User user = dataStore.getUser();
+
+        if(user == null){
+            fragment = new ProfileFragment();
         }
         final FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.board_container, fragment).commit();
