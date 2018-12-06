@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">CaloricCounter</string>
+    <string name="menu_overall">Overall</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_menu">Menu</string>
+    <string name="menu_profile">Profile</string>
+
+    <string name="proteins_text">Proteins:</string>
+    <string name="carbohydrates_text">Carbs:</string>
+    <string name="fats_text">Fats:</string>
+    <string name="fiber_text">Fiber:</string>
+    <string name="total_cal_text">Total calories:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="calories">Calories:</string>
+    <string name="search">Search</string>
+    <string name="weight">Weight</string>
+    <string name="grams">g</string>
+    <string name="add_food">Add food</string>
+    <string name="name">Name</string>
+    <string name="height">height</string>
+    <string name="goal_weight">Goal weight</string>
+    <string name="age">Age</string>
+    <string name="change">Change</string>
+    <string name="add_new">Add new</string>
+    <string name="title_activity_create_new_food">CreateNewFoodActivity</string>
+    <string name="barcode_text">Barcode</string>
+    <string name="scan">Scan</string>
+    <string name="find_by_scan">Scan barcode</string>
+    <string name="create_new">Create new food</string>
+
+</resources>
